@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Details</title>
+</head>
+<body>
+
+<h1> My Personal Contact Page  </h1>
+
+<table cellpadding="2">
+    <tr th:each="myPerson : ${persons}">
+        <td th:text="${myPerson.firstAttendance}"> </td>
+        <td th:text="${myPerson.name}"> </td>
+        <td th:text="${myPerson.mobileNum}"> </td>
+        <td th:text="${myPerson.email}"> </td>
+        <td th:text="${myPerson.address}"> </td>
+        <td th:text="${myPerson.landLine}"> </td>
+        <td th:text="${myPerson.postCode}"> </td>
+        <td th:text="${myPerson.area}"> </td>
+        <td th:text="${myPerson.firstComment}"> </td>
+        <td th:text="${myPerson.registeredTime}"> </td>
+        <td th:text="${myPerson.entryStatus}"> </td>
+    </tr>
+
+</table>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        .submit-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        form{
+            display: inline-block;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center; border-bottom: 1px solid #000000; padding-bottom:5px;">Status Management</h2>
+<table cellpadding="2">
+    <tr>
+        <td> <a th:href="${'/status/add'}"> CREATE NEW STATUS </a></td>
+
+    </tr>
+    <tr>
+        <th>S/N</th>
+        <th>NAME</th>
+        <th>ACTIONS</th>
+    </tr>
+
+    <tr th:each="status, counter : ${statusList}">
+
+        <td th:text="${counter.index +1}"> </td>
+        <td th:text="${status.name}"> </td>
+
+        <td>
+            <a th:href="${'/status/'+status.id}"> Edit </a> &nbsp; |
+
+            <form th:action="${'/status?id='+status.id}" th:method="delete">
+                <input type="submit" class="submit-button" value="Delete">
+            </form>
+        </td>
+
+    </tr>
+
+
+
+</table>
+
+
+
+
+</body>
+</html>

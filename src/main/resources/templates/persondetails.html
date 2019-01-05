@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .wrapper {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 10px;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #000;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #000;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px 35px 5px 5px;
+            font-size: 16px;
+            border: 1px solid #000;
+            height: 34px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    </style>
+</head>
+<body>
+
+
+<h2 style="text-align:center; border-bottom: 1px solid #000000; padding-bottom:5px;" th:text="${person.name}">  </h2>
+
+
+
+<div class="wrapper">
+
+
+    <form th:action="@{/persons}" th:object="${person}" th:method="put">
+        <label> Person Details </label>
+
+        <input type="hidden"  th:value="${person.id}" th:field="*{id}">
+        <input type="text" th:value="${person.name}" th:field="*{name}">
+        <input type="text"  th:value="${person.firstAttendance}" th:field="*{firstAttendance}">
+        <input type="text" th:value="${person.mobileNum}" th:field="*{mobileNum}">
+        <input type="text"  th:value="${person.email}" th:field="*{email}">
+        <input type="text" th:value="${person.address}" th:field="*{address}">
+        <input type="text"  th:value="${person.landLine}" th:field="*{landLine}">
+        <input type="text" th:value="${person.postCode}" th:field="*{postCode}">
+        <input type="text" th:value="${person.area}" th:field="*{area}">
+        <input type="text"  th:value="${person.firstComment}" th:field="*{firstComment}">
+
+
+        <select th:field="*{membershipStatus}">
+            <th:block th:each="status : ${statusList}">
+
+                <option th:value="${status.id}"
+                        th:text="${status.name}"
+                        th:selected="${status.id == person.membershipStatus.id}"> ... </option>
+            </th:block>
+        </select>
+
+        <input type="text"  th:value="${person.entryStatus}" th:field="*{entryStatus}">
+
+
+
+        <input type="submit" value="Submit">
+    </form>
+
+
+
+</div>
+
+
+</body>
+</html>
+
+
+<!--
+<select>
+    <option value="1">Volvo</option>
+    <option value="2">Saab</option>
+    <option value="3" selected>Opel</option>
+    <option value="4">Audi</option>
+</select>-->

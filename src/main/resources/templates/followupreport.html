@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Follow Up Report</title>
+</head>
+<body>
+<h1>Follow Up Report Page</h1>
+
+<table cellpadding="2">
+
+    <tr th:each="singleReport : ${reportList}">
+
+        <td th:text="${singleReport.contactDate}"> </td>
+        <td th:text="${singleReport.reportDetails}"> </td>
+        <td th:text="${singleReport.person.name}"> </td>
+
+    </tr>
+
+
+</table>
+
+
+</body>
+</html>

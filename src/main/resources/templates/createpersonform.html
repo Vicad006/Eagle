@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot and Thymeleaf example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Create Status Form</title>
+
+    <style>
+        .wrapper {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 10px;
+        }
+
+        input[type=text] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #000;
+        }
+
+        input[type=submit] {
+            width: 50%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #000;
+        }
+
+        select {
+            width: 50%;
+            padding: 5px 35px 5px 5px;
+            font-size: 16px;
+            border: 1px solid #000;
+            height: 34px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center; border-bottom: 1px solid #000000; padding-bottom:5px;"> CREATE NEW PERSON</h2>
+
+<div class="wrapper">
+
+
+    <form th:action="@{/persons}" th:object="${person}" th:method="post">
+
+        <input type="text" name="name" th:field="*{name}" placeholder="Name">
+        <input type="text" name="name" th:field="*{firstAttendance}" placeholder="First Attendance">
+        <input type="text" name="name" th:field="*{mobileNum}" placeholder="Mobile Number">
+
+        <input type="text" name="name" th:field="*{email}" placeholder="Email">
+
+        <input type="text" name="name" th:field="*{address}" placeholder="Address">
+
+        <input type="text" name="name" th:field="*{landLine}" placeholder="Land Line">
+
+        <input type="text" name="name" th:field="*{postCode}" placeholder="Post Code">
+
+        <input type="text" name="name" th:field="*{area}" placeholder="Area">
+
+        <input type="text" name="name" th:field="*{firstComment}" placeholder="First Comment">
+
+        <select th:field="*{membershipStatus}">
+            <th:block th:each="status : ${statusList}">
+
+                <option th:value="${status.id}"
+                        th:text="${status.name}"> ... </option>
+            </th:block>
+        </select> <!-- Its working now but whenever you update, the time disappears -->
+
+        <input type="text" name="name" th:field="*{entryStatus}" placeholder="Entry Status">
+
+        <input type="submit" value="Submit">
+    </form>
+
+</div>
+
+
+</body>
+</html>

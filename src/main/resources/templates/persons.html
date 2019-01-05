@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        .submit-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        form{
+            display: inline-block;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<h2 style="text-align:center; border-bottom: 1px solid #000000; padding-bottom:5px;">Person Management</h2>
+<table cellpadding="2">
+    <tr>
+        <td> <a th:href="${'/persons/add'}"> CREATE NEW PERSON </a></td>
+
+    </tr>
+    <tr>
+        <th> S/N </th>
+        <th> ADDRESS </th>
+        <th> AREA </th>
+        <th> EMAIL </th>
+        <th> FIRST ATTENDANCE </th>
+        <th> FIRST COMMENT </th>
+        <th> LANDLINE </th>
+        <th> MOBILE NUMBER </th>
+        <th> NAME </th>
+        <th> POST CODE </th>
+        <th> REGISTERED TIME </th>
+        <th> MEMBERSHIP STATUS </th>
+        <th> ACTION </th>
+    </tr>
+
+    <tr th:each="people, counter : ${persons}">
+
+        <td th:text="${counter.index +1}"> </td>
+        <td th:text="${people.address}"> </td>
+        <td th:text="${people.area}"> </td>
+        <td th:text="${people.email}"> </td>
+        <td th:text="${people.firstAttendance}"> </td>
+        <td th:text="${people.firstComment}"> </td>
+        <td th:text="${people.landLine}"> </td>
+        <td th:text="${people.mobileNum}"> </td>
+        <td th:text="${people.name}"> </td>
+        <td th:text="${people.postCode}"> </td>
+        <td th:text="${people.registeredTime}"> </td>
+        <td th:text="${people.membershipStatus.name}"> </td>
+
+        <!-- You have some NULL record in the datatbase, thats why its falling into error at those points
+
+         Let e continue working on it, just look at what Im doing, I think I can still spare sometime y -->
+        <td>
+            <a th:href="${'/persons/'+people.id}"> Edit </a> &nbsp; |
+
+            <form th:action="${'/persons?id='+people.id}" th:method="delete">
+                <input type="submit" class="submit-button" value="Delete">
+            </form> |
+
+            <a th:href="${'/reports?person='+people.id}"> Report </a> &nbsp;
+        </td>>
+
+    </tr>
+</table>
+</body>
+</html>
