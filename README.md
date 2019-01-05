@@ -1,2 +1,2 @@
-# eagle
-Enterprise Church Manageent Software
+# Eagle
+Enterprise Church Management Software
