@@ -38,6 +38,7 @@ public class FollowUpReportViewController {
         List<FollowUpReport> report = followUpReportRepository.findByPerson(person);
         model.addAttribute("report",report);
 
+
         return "personreports";
     }
 }
